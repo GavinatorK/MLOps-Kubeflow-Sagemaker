@@ -1,5 +1,3 @@
-# MLOps-Kubeflow-Sagemaker
-
 # Kubeflow Pipelines with Amazon SageMaker
 
 ##Prerequisites 
