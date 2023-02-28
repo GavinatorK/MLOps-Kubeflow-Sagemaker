@@ -2,7 +2,12 @@
 
 # Kubeflow Pipelines with Amazon SageMaker
 
-##Prerequisites 
+![KubeflowDag](img/image-20230228092922280.png)
+
+### Prerequisites 
+
+1. IAM role and Policies
+2. An EC2 Instance with Kubeflow installed
 
 ### Permissions
 
@@ -124,7 +129,6 @@ Click the triangle icon next to "Advanced details" to expand this section. Now a
 
 ![image-20230223131702788](img/image-20230223131702788.png)
 
-![image-20230223131748949](img/image-20230223131748949.png)
 
 **Click Launch Instance**
 
@@ -138,7 +142,7 @@ Change permission on the key pair file that was downloaded to your local machine
 
 `chmod 400 ~/Downloads/eventengine-test-kubeflow.pem`
 
-Get the "instance-ip" for your new EC2 instance from the EC2 page on the AWS console, then run the ssh command as shown below:
+Get the "instance-ip", the public ip or public DNS for your new EC2 instance from the EC2 page on the AWS console, then run the ssh command as shown below:
 
 ssh -i <path-to-pem> ubuntu@instance-ip
 
@@ -280,7 +284,7 @@ if you get a path great, if not
 sudo pip3 install kfp
 ```
 
-try which-dsl compile again. it should show "/usr/local/bin/dsl-compile" as output
+try which dsl-compile again. it should show "/usr/local/bin/dsl-compile" as output
 
 ### Compile a pipeline to upload to kubeflow dashboard
 
@@ -354,7 +358,7 @@ Successful upload show the pipeline in list of pipelines
 
 Go to Runs, Create Run and select the pipeline we just uploaded. choose the experiment we just created and provide the bucket name and role arn variables.
 
-Role Arn can be copied from your terminal 
+Role Arn can be copied from your terminal from the earlier step when you created it as shown below 
 
 ![image-20230223161915565](img/image-20230223161915565.png)
 
@@ -408,21 +412,3 @@ Choose Clone.
     
 **Reference:** https://aws.amazon.com/blogs/machine-learning/enabling-hybrid-ml-workflows-on-amazon-eks-and-amazon-sagemaker-with-one-click-kubeflow-on-aws-deployment/
 
-###  Kubeflow Conditions Examples 
-```
-@dsl.pipeline(
-    name='Conditional execution pipeline',
-    description='Shows how to use dsl.Condition().'
-)
-def conditional_pipeline():
-    number = get_random_int_op(0, 100).output 
-    with dsl.Condition(number < 10): 
-	process_small_op(number)
-    with dsl.Condition(number > 10 and number < 50): 
-	process_medium_op(number)
-    with dsl.Condition(number > 50): 
-	process_large_op(number)
-
-kfp.Client().create_run_from_pipeline_func(conditional_pipeline, arguments={})
-
-```
