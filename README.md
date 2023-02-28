@@ -212,6 +212,13 @@ EOF
 make deploy
 ```
 
+## Redo the Junction Classifier Example from Step Functions MLOps on Kubeflow 
+Run Notebooks, Data Prep, training container, inference container, base image  
+    
+We will use these to modify an example script to work with our use case .
+    
+
+    
 ## Set up the Kubeflow Permissions
 
 Add permissions to Notebook pod and Pipeline component pod to make SageMaker, S3 and IAM api calls using `kubeflow_iam_permissions.sh` script.
