@@ -9,6 +9,7 @@
 1. IAM role and Policies
 2. An EC2 Instance with Kubeflow installed
 
+
 ### Permissions
 
 Note: The permissions here are a open to allow for a quick workshop experience, these can be further locked down in development and production based on the persona. Data scientist, MLops..etc. 
@@ -411,4 +412,5 @@ Choose Clone.
 
     
 **Reference:** https://aws.amazon.com/blogs/machine-learning/enabling-hybrid-ml-workflows-on-amazon-eks-and-amazon-sagemaker-with-one-click-kubeflow-on-aws-deployment/
+
 
