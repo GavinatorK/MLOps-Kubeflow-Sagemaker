@@ -152,7 +152,7 @@ Set up your environment for deploying Kubeflow on AWS by running each of the com
 ```bash
 #Clone the awslabs/kubeflow-manifests and the kubeflow/manifests repositories and check out the release branches of your choosing
 export KUBEFLOW_RELEASE_VERSION=v1.6.1
-export AWS_RELEASE_VERSION=v1.6.1-aws-b1.0.0
+export AWS_RELEASE_VERSION=v1.6.1-aws-b1.0.1
 git clone https://github.com/awslabs/kubeflow-manifests.git && cd kubeflow-manifests
 git checkout ${AWS_RELEASE_VERSION}
 git clone --branch ${KUBEFLOW_RELEASE_VERSION} https://github.com/kubeflow/manifests.git upstream
